@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         redirect_to root_path, notice: "Welcome, #{user.name}"
       else
         flash[:alert] = "Password did not match records"
-        render: :new
+        render :new
       end
     rescue ActiveRecord::RecordNotFound => error
       flash[:alert] = "Email did not match records"
