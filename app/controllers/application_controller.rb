@@ -15,4 +15,11 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
+  def is_an_admin?
+    unless current_user.admin
+      flash[:alert] = "Access Denied"
+      redirect_to :back
+    end
+  end
 end
