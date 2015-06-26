@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(params[:user_id]) if params[:user_id]
   end
 
+  helper_method :current_user
+
   def authenticate_user!
     unless current_user
       flash[:alert] = "You must be logged in to do that."
@@ -16,8 +18,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def is_an_admin?
-    unless current_user.admin
+  def current_user_an_admin?(user)
+    if user[:admin]
+      true
+    else
       flash[:alert] = "Access Denied"
       redirect_to :back
     end
