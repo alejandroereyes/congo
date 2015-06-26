@@ -43,7 +43,7 @@ group :development, :test do
   gem 'spring'
 end
 
-
+gem 'will_paginate', '~> 3.0.6'
 gem 'puma'
 gem 'figaro'
 group :production do
