@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
 
   before_filter :current_user
 
+  def new_user
+    @new_user = User.new
+  end
+
+  helper_method :new_user
+
   def current_user
     @current_user ||= User.find(params[:user_id]) if params[:user_id]
   end

@@ -15,9 +15,9 @@
     </div>
     <div class="col-sm-4 sidebar">
       <% if current_user %>
-
+        <%= "Welcome #{current_user.name}" %>
       <% else %>
-
+          <%= render partial: 'shared/login', locals: { new_user: new_user } %>
       <% end %>
     </div>
   </div>

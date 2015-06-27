@@ -1,0 +1,16 @@
+<section>
+  <div class="sign-up">
+    <p><strong>Sign Up Today</strong></p>
+    <%= form_for(new_user) do |f| %>
+        <%= label_tag(:name, "Name:") %>
+        <p><%= f.text_field :name, class: "input" %></p>
+        <%= label_tag(:email, "Email:") %>
+        <p><%= f.text_field :email, class: "input" %></p>
+        <%= label_tag(:password, "Password:") %>
+        <p><%= f.password_field :password, class: "input" %></p>
+        <%= label_tag(:password_confirmation, "Confirm Password:") %>
+        <p><%= f.password_field :password_confirmation, class: "input" %></p>
+        <%= f.submit "Submit", class: "btn btn-default" %>
+    <% end %>
+  </div>
+</section>

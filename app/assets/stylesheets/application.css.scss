@@ -5,7 +5,21 @@
 
 $lite-grey: #DDDDDD;
 
+.my-cool-nav {
+  margin-bottom: 10px;
+}
+
 .sidebar{
   border: 1px solid $lite-grey;
   border-radius: 5px;
+  padding: 15px;
+
+  .sign-up {
+    text-align: center;
+
+    .input {
+      border: 1px solid $lite-grey;
+      border-radius: 5px;
+    }
+  }
 }

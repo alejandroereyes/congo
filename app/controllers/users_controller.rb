@@ -7,6 +7,18 @@ class UsersController < ApplicationController
     # end
   end
 
+  def new
+  end
+
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to root_path, notice: "Welcome #{user.name}"
+    else
+      flash[:alert] = "Error Occured"
+    end
+  end
+
   def show
     authenticate_user!
     begin
@@ -16,5 +28,10 @@ class UsersController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       redirect_to :back, flash[:alert] = "Record not found"
     end
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:name, :password, :password_confirmation, :email)
   end
 end

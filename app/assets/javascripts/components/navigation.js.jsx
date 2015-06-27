@@ -3,7 +3,7 @@
 var Navigation = React.createClass({
    render: function () {
        return (
-           <nav role='Navigation'>
+           <nav role='Navigation' className='my-cool-nav'>
                <ul className='nav nav-tabs'>
                     <NavLink name='Home' url='/' />
                     <LogIn />
