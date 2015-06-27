@@ -46,6 +46,7 @@ var LogIn = React.createClass({
                 </div>
 
                 <button onClick={this.submit} type="submit" className="btn btn-primary">Login</button>
+                <button onClick={this.logout} type="submit" className="btn btn-primary">Logout</button>
             </div>
         )
     },
@@ -61,6 +62,20 @@ var LogIn = React.createClass({
     },
     passwordChange: function() {
         this.setState({password: event.target.value})
+    },
+
+    logout: function(event) {
+        $.get('/logout', this.state, function(){
+            console.log('GoodBye');
+        });
+    },
+
+    emailLogout: function() {
+        this.setState({email: ""});
+    },
+
+    passwordLogout: function() {
+        this.setState({password: ""});
     }
 });
 
