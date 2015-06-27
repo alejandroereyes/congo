@@ -20,8 +20,9 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     unless current_user
       flash[:alert] = "You must be logged in to do that."
-      redirect_to login_path
+      return false
     end
+    true
   end
 
   def current_user_an_admin?(user)
