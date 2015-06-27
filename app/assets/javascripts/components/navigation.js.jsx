@@ -5,7 +5,7 @@ var Navigation = React.createClass({
        return (
            <nav role='Navigation'>
                <ul className='nav nav-tabs'>
-                    <NavLink name='Home' url='/users' />
+                    <NavLink name='Home' url='/' />
                     <LogIn />
                </ul>
            </nav>
@@ -19,7 +19,7 @@ var NavLink = React.createClass({
     },
 
     clicked: function() {
-        window.locaiton.href = this.props.url;
+        window.location.href = this.props.url;
     }
 });
 
