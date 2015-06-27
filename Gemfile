@@ -44,6 +44,7 @@ group :development, :test do
 end
 
 gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate-bootstrap'
 gem 'puma'
 gem 'figaro'
 group :production do
