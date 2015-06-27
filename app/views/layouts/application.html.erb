@@ -14,8 +14,8 @@
       <%= yield %>
     </div>
     <div class="col-sm-4 sidebar">
-      <% if current_user %>
-        <%= "Welcome #{current_user.name}" %>
+      <% if session[:user_id] %>
+        <%= "Welcome #{session[:user_id]}" %>
       <% else %>
           <%= render partial: 'shared/login', locals: { new_user: new_user } %>
       <% end %>

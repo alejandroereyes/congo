@@ -60,7 +60,7 @@ var LogIn = React.createClass({
         this.setState({email: event.target.value})
     },
     passwordChange: function() {
-        this.setSate({password: event.target.value})
+        this.setState({password: event.target.value})
     }
 });
 
