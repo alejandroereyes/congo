@@ -1,4 +1,11 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
-@import 'items'
+@import 'items';
 //You need to now manually import every other scss file.
+
+$lite-grey: #DDDDDD;
+
+.sidebar{
+  border: 1px solid $lite-grey;
+  border-radius: 5px;
+}
