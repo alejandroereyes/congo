@@ -6,6 +6,11 @@
 
 $lite-grey: #DDDDDD;
 $off-white: #F6F6F6;
+$rose-white: #FDF3E7;
+
+body {
+  background-color: lighten($rose-white, 3%);
+}
 
 .my-cool-nav {
   margin-bottom: 10px;
@@ -26,12 +31,12 @@ header {
   background-size: cover;
 
   a{
-    color: $off-white;
+    color: lighten($rose-white, 1%);
     text-decoration: none;
 
     &:hover{
       text-decoration: none;
-      color: $off-white;
+      color: lighten($rose-white, 0%);
     }
   }
 }
