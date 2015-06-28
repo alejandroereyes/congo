@@ -44,6 +44,7 @@ header {
 .for-yield {
   background-color: lighten($rose-white, 1%);
   border-radius: 5px;
+
 }
 
 .sidebar{
@@ -59,4 +60,9 @@ header {
       border-radius: 5px;
     }
   }
+
+  .cart.p {
+    text-align: center;
+  }
+
 }

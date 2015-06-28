@@ -26,7 +26,7 @@
         <% if session[:user_id] %>
             <% cart = get_cart %>
             <% user = User.find(session[:user_id]) %>
-            <%= react_component('Cart', {name: user.name.capitalize, orderId: cart.id, items: cart.items}) %>
+            <%= render partial: 'shared/cart', locals: {name: user.name.capitalize, cart: cart} %>
         <% else %>
             <%= render partial: 'shared/login', locals: { new_user: new_user } %>
         <% end %>

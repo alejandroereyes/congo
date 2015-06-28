@@ -1,0 +1,12 @@
+<div class="for-yield cart">
+  <p><%= "Welcome #{name}" %></p>
+  <p><strong>Shopping Cart Total</strong>
+    <%= number_to_currency(cart.order_items.total_due(cart.id)) %>
+  </p>
+  <ul>
+    <% cart.items.each do |item| %>
+      <li><%= item.title %></li>
+        <ul><li><%= number_to_currency(item.cost) %></li></ul>
+    <% end %>
+  </ul>
+</div>

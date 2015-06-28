@@ -5,7 +5,7 @@ var Cart = React.createClass({
         return {
             userName: this.props.name,
             orderNum: this.props.orderId,
-            allItems: this.props.items
+            allItems: []
         };
     },
 
@@ -16,11 +16,16 @@ var Cart = React.createClass({
                <p> Shopping Cart</p>
                <p>Hello {this.state.userName}</p>
                <p>Order #{this.state.orderNum}</p>
-               <p>Items {this.state.allItems}</p>
+               <ul>
+               <itemName allItems={this.state.allItems} />
+               </ul>
            </div>
        )
-   },
+   }
+});
 
-
-
+var itemName = React.createClass ({
+    render: function () {
+        return(<li>Items {this.state.allItems}</li>);
+    }
 });
