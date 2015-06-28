@@ -7,22 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= react_component ('Navigation') %>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-8">
-      <%= yield %>
+  <%= react_component ('Navigation') %>
+  <p style='color:red;'><%= flash[:alert] %></p>
+  <p style='color:green;'><%= flash[:notice] %></p>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <%= yield %>
+        </div>
+        <div class="col-sm-4 sidebar">
+          <% if session[:user_id] %>
+             <% user = User.find(session[:user_id]) %>
+           <%= react_component('Cart', {name: user.name}) %>
+          <% else %>
+            <%= render partial: 'shared/login', locals: { new_user: new_user } %>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-4 sidebar">
-      <% if session[:user_id] %>
-        <%= "Welcome #{session[:user_id]}" %>
-      <% else %>
-          <%= render partial: 'shared/login', locals: { new_user: new_user } %>
-      <% end %>
-    </div>
-  </div>
-</div>
-
 </body>
 </html>

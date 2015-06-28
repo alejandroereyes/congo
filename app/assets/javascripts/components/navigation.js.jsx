@@ -5,7 +5,7 @@ var Navigation = React.createClass({
        return (
            <nav role='Navigation' className='my-cool-nav'>
                <ul className='nav nav-tabs'>
-                    <NavLink name='Home' url='/' />
+                    <NavLink name='Congo' url='/' />
                     <LogIn />
                </ul>
            </nav>

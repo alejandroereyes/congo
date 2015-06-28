@@ -13,8 +13,7 @@
       <td><%="$ #{@item.cost}" %></td>
       <td><%= @item.description %></td>
       <td><%= @item.inventory %></td>
-      <td><%= button_to "Add Item", method: "post", controller: 'orders', action: "create",
-                                      data: { item_id: @item.id, quantity: 1 } %></td>
+      <td><%= button_to "Add Item", new_order_path(item_id: @item.id, quantity: 1), class: 'btn btn-default' %></td>
     </tr>
   </tbody>
 </table>
