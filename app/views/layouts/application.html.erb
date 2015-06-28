@@ -10,22 +10,26 @@
   <% user = current_user if current_user %>
   <% admin = user[:admin] if current_user %>
   <%= react_component ('NavChoice'), {admin: admin} %>
+
+  <%= render partial: 'shared/header' %>
+
   <p style='color:red;'><%= flash[:alert] %></p>
   <p style='color:green;'><%= flash[:notice] %></p>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8">
-          <%= yield %>
-        </div>
-        <div class="col-sm-4 sidebar">
-          <% if session[:user_id] %>
-             <% user = User.find(session[:user_id]) %>
-           <%= react_component('Cart', {name: user.name}) %>
-          <% else %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <%= yield %>
+      </div>
+      <div class="col-sm-4 sidebar">
+        <% if session[:user_id] %>
+            <% user = User.find(session[:user_id]) %>
+            <%= react_component('Cart', {name: user.name}) %>
+        <% else %>
             <%= render partial: 'shared/login', locals: { new_user: new_user } %>
-          <% end %>
-        </div>
+        <% end %>
       </div>
     </div>
+  </div>
 </body>
 </html>

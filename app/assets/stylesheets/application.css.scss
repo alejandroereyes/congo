@@ -9,6 +9,26 @@ $lite-grey: #DDDDDD;
   margin-bottom: 10px;
 }
 
+header {
+  color: $lite-grey;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-size: 3em;
+  background-image: url(https://annabelleunsw.files.wordpress.com/2012/03/themarketplace.jpg?w=1280&h=960);
+  background-size: cover;
+
+  a{
+    color: $lite-grey;
+    text-decoration: none;
+
+    &:hover{
+      text-decoration: none;
+      color: $lite-grey;
+    }
+  }
+}
+
 .sidebar{
   border: 1px solid $lite-grey;
   border-radius: 5px;
