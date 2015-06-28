@@ -14,6 +14,9 @@
 
   <%= render partial: 'shared/header' %>
 
+  <% cart = get_cart %>
+  <%= cart.inspect %>
+
   <p style='color:red;'><%= flash[:alert] %></p>
   <p style='color:green;'><%= flash[:notice] %></p>
 

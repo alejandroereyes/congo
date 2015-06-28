@@ -34,4 +34,14 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :new_user
+
+  def get_cart
+    if authenticate_user!
+      @user_order = Order.find_by(user_id: session[:user_id], completed: false)
+    else
+      redirect_to root_path, notice: "Please log in"
+    end
+  end
+
+  helper_method :get_cart
 end

@@ -41,10 +41,15 @@ header {
   }
 }
 
+.for-yield {
+  background-color: lighten($rose-white, 1%);
+  border-radius: 5px;
+}
+
 .sidebar{
-  border: 1px solid $lite-grey;
   border-radius: 5px;
   padding: 15px;
+  background-color: lighten($rose-white, 1%);
 
   .sign-up {
     text-align: center;
