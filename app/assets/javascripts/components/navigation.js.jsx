@@ -15,7 +15,7 @@ var Navigation = React.createClass({
        return (
            <nav role='Navigation' className='my-cool-nav'>
                <ul className='nav nav-tabs'>
-                    <NavLink name='Congo' url='/' />
+                    <NavLink className='home-name' name='Congo' url='/' />
                     <LogIn />
                </ul>
            </nav>
@@ -28,7 +28,7 @@ var Admin = React.createClass({
         return (
             <nav role='Navigation' className='my-cool-nav'>
                 <ul className='nav nav-tabs'>
-                    <NavLink name='Congo' url='/' />
+                    <NavLink className='home-name' name='Congo' url='/' />
                     <NavLink name='All Orders' url='/orders' />
                     <LogIn />
                 </ul>

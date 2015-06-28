@@ -4,14 +4,20 @@
 //You need to now manually import every other scss file.
 
 $lite-grey: #DDDDDD;
+$off-white: #F6F6F6;
 
 .my-cool-nav {
   margin-bottom: 10px;
+
+    a {
+      font-family: 'Berkshire Swash', cursive;
+    }
+
 }
 
 header {
-  color: $lite-grey;
   text-align: center;
+  font-family: 'Berkshire Swash', cursive;
   padding: 10px;
   margin-bottom: 5px;
   font-size: 3em;
@@ -19,12 +25,12 @@ header {
   background-size: cover;
 
   a{
-    color: $lite-grey;
+    color: $off-white;
     text-decoration: none;
 
     &:hover{
       text-decoration: none;
-      color: $lite-grey;
+      color: $off-white;
     }
   }
 }

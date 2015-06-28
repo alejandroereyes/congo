@@ -1,10 +1,15 @@
 class OrdersController < ApplicationController
 
   def index
-    if current_user_an_admin?
-      @orders = Order.all
+    if authenticate_user!
+      user = User.find(session[:user_id])
+      if current_user_an_admin?(user)
+        @orders = Order.all
+      else
+        redirect_to :back, flash[:alert] = "Access Denied"
+      end
     else
-      redirect_to :back, flash[:alert] = "Access Denied"
+      redirect_to root_path, flast[:alert] = "Please log In"
     end
   end
 
