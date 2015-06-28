@@ -53,7 +53,6 @@ end
 
 group :development, :test do
   gem 'pry'
-  gem 'faker'
 end
 
 gem 'bullet', group: :development
@@ -61,3 +60,4 @@ gem 'bootstrap-sass'
 gem 'react-rails'
 gem 'bcrypt'
 gem 'mandrill_dm'
+gem 'faker'
