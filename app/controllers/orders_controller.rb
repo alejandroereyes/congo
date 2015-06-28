@@ -13,6 +13,14 @@ class OrdersController < ApplicationController
     end
   end
 
+  def show
+    if authenticate_user!
+      @order = Order.find(params[:id])
+    else
+      redirect_to root_path, flast[:alert] = "Please log In"
+    end
+  end
+
   def cart
     if authenticate_user!
       @user_order = Order.find_by(user_id: session[:user_id], completed: false)
