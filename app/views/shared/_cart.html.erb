@@ -1,15 +1,19 @@
 <div class="for-yield cart">
   <p><%= "Welcome #{name}" %></p>
-  <p><strong>Shopping Cart Total</strong>
-    <%= number_to_currency(cart.order_items.total_due(cart.id)) %>
-  </p>
-  <ul>
-    <% cart.items.each do |item| %>
-      <li><%= item.title %></li>
-        <ul><li><%= number_to_currency(item.cost) %></li></ul><br>
+    <% if cart %>
+      <p><strong>Shopping Cart Total</strong>
+        <%= number_to_currency(cart.order_items.total_due(cart.id)) %>
+      </p>
+      <ul>
+        <% cart.items.each do |item| %>
+          <li><%= item.title %></li>
+            <ul><li><%= number_to_currency(item.cost) %></li></ul><br>
+        <% end %>
+      </ul>
+      <div class="checkout-box">
+        <%= button_to "Check Out", checkout_path, class: 'btn btn-default'  %>
+      </div>
+    </div>
+    <% else %>
+    <p>Shop the World</p>
     <% end %>
-  </ul>
-  <div class="checkout-box">
-    <%= button_to "Check Out", checkout_path, class: 'btn btn-default'  %>
-  </div>
-</div>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get '/cart', to: 'orders#cart'
   post '/orders', to: 'orders#create', as: 'new_order'
-  put 'checkout', to: 'orders#checkout', as: 'checkout'
+  post 'checkout', to: 'orders#checkout', as: 'checkout'
   resources :orders
 
   post '/login', to: 'sessions#create', as: 'login'

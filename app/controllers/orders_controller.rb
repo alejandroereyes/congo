@@ -31,10 +31,12 @@ class OrdersController < ApplicationController
 
   def checkout
     if authenticate_user!
+      @user = User.find(session[:user_id])
       @user_order = cart
-      @amount_due =  @user_order.order_items.total_due
+      @amount_due =  @user_order.order_items.total_due(@user_order.id)
       @user_order[:completed] = true
       if @user_order.save
+        CheckoutCompleted.checkout_confirmation(@user, @user_order).deliver_now
         redirect_to root_path, notice: "Your order has been processed"
       else
         redirect_to :back, alert: "Error processing checkout"
