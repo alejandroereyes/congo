@@ -14,9 +14,6 @@
 
   <%= render partial: 'shared/header' %>
 
-  <% cart = get_cart %>
-  <%= cart.inspect %>
-
   <p style='color:red;'><%= flash[:alert] %></p>
   <p style='color:green;'><%= flash[:notice] %></p>
 
@@ -27,8 +24,9 @@
       </div>
       <div class="col-sm-4 sidebar">
         <% if session[:user_id] %>
+            <% cart = get_cart %>
             <% user = User.find(session[:user_id]) %>
-            <%= react_component('Cart', {name: user.name}) %>
+            <%= react_component('Cart', {name: user.name.capitalize, orderId: cart.id, items: cart.items}) %>
         <% else %>
             <%= render partial: 'shared/login', locals: { new_user: new_user } %>
         <% end %>
