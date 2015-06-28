@@ -19,10 +19,10 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-md-8">
         <%= yield %>
       </div>
-      <div class="col-sm-4 sidebar">
+      <div class="col-md-4 sidebar">
         <% if session[:user_id] %>
             <% user = User.find(session[:user_id]) %>
             <%= react_component('Cart', {name: user.name}) %>

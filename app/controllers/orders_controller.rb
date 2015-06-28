@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
     if authenticate_user!
       user = User.find(session[:user_id])
       if current_user_an_admin?(user)
-        @orders = Order.all
+        @orders = Order.all.paginate(:page => params[:page], :per_page => 15)
       else
         redirect_to :back, flash[:alert] = "Access Denied"
       end
