@@ -1,7 +1,11 @@
 class OrdersController < ApplicationController
 
   def index
-    @orders = Order.all
+    if current_user_an_admin?
+      @orders = Order.all
+    else
+      redirect_to :back, flash[:alert] = "Access Denied"
+    end
   end
 
   def cart
@@ -21,7 +25,7 @@ class OrdersController < ApplicationController
       @order_item[:quantity] += params[:quantity].to_i
 
       if @order_item.save
-        redirect_to :back, notice: "#{@order_item.inspect}"
+        redirect_to :back, notice: "This item has been added to your cart"
         # redirect_to root_path, notice: "Your item has been added to your cart"
       else
         render :new, flash[:alert] = "Item was not saved, make sure you're logged in"

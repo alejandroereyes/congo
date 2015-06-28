@@ -16,7 +16,7 @@
   user.name = Faker::Name.first_name
   user.email = Faker::Internet.free_email("#{user.name}")
   user.password = user.name
-  user.password_confirmation = user.name
+  user.password_confirmation = "word"
   user.save
 
   order = Order.create(user_id: user.id, completed: [true, false].sample)

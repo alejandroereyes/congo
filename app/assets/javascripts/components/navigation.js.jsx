@@ -1,5 +1,15 @@
 'use strict'
 
+var NavChoice = React.createClass({
+   render: function() {
+       if (this.props.admin) {
+           return (<div><Admin /></div>);
+       } else {
+           return (<div><Navigation /></div>);
+       }
+   }
+});
+
 var Navigation = React.createClass({
    render: function () {
        return (
@@ -11,6 +21,20 @@ var Navigation = React.createClass({
            </nav>
        )
    }
+});
+
+var Admin = React.createClass({
+    render: function () {
+        return (
+            <nav role='Navigation' className='my-cool-nav'>
+                <ul className='nav nav-tabs'>
+                    <NavLink name='Congo' url='/' />
+                    <NavLink name='All Orders' url='/orders' />
+                    <LogIn />
+                </ul>
+            </nav>
+        )
+    }
 });
 
 var NavLink = React.createClass({
@@ -53,6 +77,7 @@ var LogIn = React.createClass({
 
     submit: function(event) {
         $.post('/login',this.state , function(){
+            $.get('/');
             console.log('Hi!!');
         });
     },
@@ -66,6 +91,7 @@ var LogIn = React.createClass({
 
     logout: function(event) {
         $.get('/logout', this.state, function(){
+            $.get('/');
             console.log('GoodBye');
         });
     },

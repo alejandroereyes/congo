@@ -7,7 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= react_component ('Navigation') %>
+  <% user = current_user if current_user %>
+  <% admin = user[:admin] if current_user %>
+  <%= react_component ('NavChoice'), {admin: admin} %>
   <p style='color:red;'><%= flash[:alert] %></p>
   <p style='color:green;'><%= flash[:notice] %></p>
     <div class="container">

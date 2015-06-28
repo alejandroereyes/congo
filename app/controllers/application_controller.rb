@@ -6,8 +6,10 @@ class ApplicationController < ActionController::Base
   before_filter :current_user
 
   def current_user
-    @current_user ||= User.find(params[:user_id]) if params[:user_id]
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
+
+  helper_method :current_user
 
   def authenticate_user!
      if session[:user_id] == nil
@@ -21,8 +23,15 @@ class ApplicationController < ActionController::Base
     if user[:admin]
       true
     else
-      flash[:alert] = "Access Denied"
-      redirect_to :back
+      false
     end
   end
+
+  helper_method :current_user_an_admin?
+
+  def new_user
+    @new_user = User.new
+  end
+
+  helper_method :new_user
 end
