@@ -1,0 +1,2 @@
+class CheckoutCompleted < ApplicationMailer
+end
