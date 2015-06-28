@@ -10,7 +10,7 @@
   <tbody>
   <% @orders.each do |order| %>
     <tr>
-      <td><%= order.id %></td>
+      <td><%= link_to order.id, order_path(order.id) %></td>
       <td><%= order.user.name %></td>
       <td><%= order.completed ? "Paid" : "Not Paid" %></td>
       <td><%= number_to_currency(order.order_items.total_due(order.id)) %></td>
