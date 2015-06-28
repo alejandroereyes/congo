@@ -17,13 +17,28 @@ class OrdersController < ApplicationController
     if authenticate_user!
       @order = Order.find(params[:id])
     else
-      redirect_to root_path, flast[:alert] = "Please log In"
+      redirect_to root_path, alert: "Please log In"
     end
   end
 
   def cart
     if authenticate_user!
       @user_order = Order.find_by(user_id: session[:user_id], completed: false)
+    else
+      redirect_to root_path, notice: "Please log in"
+    end
+  end
+
+  def checkout
+    if authenticate_user!
+      @user_order = cart
+      @amount_due =  @user_order.order_items.total_due
+      @user_order[:completed] = true
+      if @user_order.save
+        redirect_to root_path, notice: "Your order has been processed"
+      else
+        redirect_to :back, alert: "Error processing checkout"
+      end
     else
       redirect_to root_path, notice: "Please log in"
     end

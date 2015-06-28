@@ -6,7 +6,10 @@
   <ul>
     <% cart.items.each do |item| %>
       <li><%= item.title %></li>
-        <ul><li><%= number_to_currency(item.cost) %></li></ul>
+        <ul><li><%= number_to_currency(item.cost) %></li></ul><br>
     <% end %>
   </ul>
+  <div class="checkout-box">
+    <%= button_to "Check Out", checkout_path, class: 'btn btn-default'  %>
+  </div>
 </div>
