@@ -3,6 +3,7 @@
     <tr>
       <th>Order #</th>
       <th>Customer</th>
+      <th>Status</th>
       <th>Total</th>
     </tr>
   </thead>
@@ -10,7 +11,9 @@
   <% @orders.each do |order| %>
     <tr>
       <td><%= order.id %></td>
-      <td><%= order.user.inspect %></td>
+      <td><%= order.user.name %></td>
+      <td><%= order.completed ? "Paid" : "Not Paid" %></td>
+      <td><%= number_to_currency(order.order_items.total_due(order.id)) %></td>
     </tr>
   <% end %>
   </tbody>
