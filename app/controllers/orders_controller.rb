@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-     if authenticate_user!
+    if authenticate_user!
       @order = Order.find_or_create_by(user_id: session[:user_id], completed: false)
       @order.save
 
@@ -63,6 +63,17 @@ class OrdersController < ApplicationController
       end
      else
        redirect_to root_path
-     end
+    end
+  end
+
+  def destroy
+    if authenticate_user!
+      user = User.find(session[:user_id])
+      open_order = Order.find_by(user_id: user.id, completed: false)
+      open_order.order_items
+      redirect_to :back, notice: "#{open_order.order_items.inspect}"
+    else
+      redirect_to root_path, alert: "Please log in"
+    end
   end
 end

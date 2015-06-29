@@ -7,7 +7,8 @@
       <ul>
         <% cart.items.each do |item| %>
           <li><%= item.title %></li>
-            <ul><li><%= number_to_currency(item.cost) %></li></ul><br>
+            <ul><li><%= number_to_currency(item.cost) %>
+                <%= button_to "Remove", "/orders/#{item.id}", method: 'delete', action: 'delete', class: 'btn btn-default btn-xs' %></li></ul><br>
         <% end %>
       </ul>
       <div class="checkout-box">
