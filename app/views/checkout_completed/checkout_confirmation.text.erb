@@ -3,7 +3,7 @@ Hello <%= @user.name %>
 Your order #<%= @order.id%>, has processed.
 <% @items.each do |item| %>
 
-     <%= item[:title] %>
+     <%= item.inspect %>
      <%= number_to_currency(item[:cost]) %>
 
 <% end %>
