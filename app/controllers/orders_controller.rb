@@ -71,7 +71,9 @@ class OrdersController < ApplicationController
       user = User.find(session[:user_id])
       open_order = Order.find_by(user_id: user.id, completed: false)
       open_order.order_items
-      redirect_to :back, notice: "#{open_order.order_items.inspect}"
+      order = OrderItem.find_by(order_id: open_order.id, item_id: params[:id])
+      order.destroy!
+      redirect_to :back, notice: "Item has been removed"
     else
       redirect_to root_path, alert: "Please log in"
     end
