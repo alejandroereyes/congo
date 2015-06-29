@@ -32,8 +32,9 @@ class OrdersController < ApplicationController
   def checkout
     if authenticate_user!
       @user = User.find(session[:user_id])
-      @user_order = cart
-      @amount_due =  @user_order.order_items.total_due(@user_order.id)
+      @user_order = Order.find_by(user_id: @user.id)
+      @items = @user_order.order_items
+      @total_paid = @user_order.order_items.total_due(@user_order[:id])
       @user_order[:completed] = true
       if @user_order.save
         CheckoutCompleted.checkout_confirmation(@user, @user_order).deliver_now
@@ -45,6 +46,11 @@ class OrdersController < ApplicationController
       redirect_to root_path, notice: "Please log in"
     end
   end
+
+  # @user = User.find(session[:user_id])
+  # @user_order = cart
+  # @items = @user_order.order_items
+  # @total_paid = @user_order.order_items.total_due(@user_order[:id])
 
   def create
      if authenticate_user!
