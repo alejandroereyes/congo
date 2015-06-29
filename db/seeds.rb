@@ -23,4 +23,3 @@
     OrderItem.create(order_id: order.id, item_id: item_two.id, quantity: Array(1..5).sample)
   end
 end
-
